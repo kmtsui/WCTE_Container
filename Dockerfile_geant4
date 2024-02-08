@@ -1,0 +1,14 @@
+FROM kmtsui/root_6.26.04
+
+RUN echo "Hello from inside the container" && \
+    echo "Base image is from docker://kmtsui/root_6.26.04" && \
+    echo "Install common software" && \
+    apt-get update && \
+    apt-get -y install libxerces-c-dev
+
+RUN echo "Install GEANT4" && \
+    wget https://github.com/Geant4/geant4/archive/refs/tags/v10.3.3.tar.gz && tar xvf v10.3.3.tar.gz && \
+    cd geant4-10.3.3 && mkdir build && cd build && \
+    cmake .. -DGEANT4_USE_GDML=ON -DCMAKE_INSTALL_PREFIX=/opt/geant4 -DGEANT4_INSTALL_DATA=ON && \
+    make && make install && \
+    cd ../.. && rm -rf geant4-10.3.3 v10.3.3.tar.gz
