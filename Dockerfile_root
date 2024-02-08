@@ -1,8 +1,9 @@
-FROM rootproject/root:6.26.04-ubuntu22.04
+FROM rootproject/6.26.14-ubuntu20.04
 
 RUN echo "Hello from inside the container" && \
-    echo "Base image is from docker://rootproject/root:6.26.04-ubuntu22.04" && \
+    echo "Base image is from docker://rootproject/6.26.14-ubuntu20.04" && \
     echo "Install common software" && \
     apt-get update && \
     apt-get -y install git vim && \
-    apt-get -y install xdg-utils --fix-missing
+    apt-get -y install xdg-utils --fix-missing && \
+    apt-get -y install libxerces-c-dev

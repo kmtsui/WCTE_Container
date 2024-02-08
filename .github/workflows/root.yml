@@ -42,7 +42,7 @@ jobs:
           file: ./Dockerfile_root
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/root_6.26.04:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/root_6.26.14:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
