@@ -8,6 +8,8 @@ RUN echo "Hello from inside the container" && \
 
 RUN echo "Install GEANT4" && \
     wget https://github.com/Geant4/geant4/archive/refs/tags/v10.3.3.tar.gz && tar xvf v10.3.3.tar.gz && \
+    echo "Apply patch to GEANT4" && \
+    sed -i 's/fsqrt/fltsqrt/g' geant4-10.3.3/source/persistency/ascii/src/G4tgrEvaluator.cc && \
     cd geant4-10.3.3 && mkdir build && cd build && \
     cmake .. -DGEANT4_USE_GDML=ON -DCMAKE_INSTALL_PREFIX=/opt/geant4 -DGEANT4_INSTALL_DATA=ON && \
     make && make install && \
