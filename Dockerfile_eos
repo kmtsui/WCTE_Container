@@ -9,6 +9,6 @@ RUN echo "Hello from inside the container" && \
     curl -sL http://storage-ci.web.cern.ch/storage-ci/storageci.key | gpg --dearmor -o /etc/apt/trusted.gpg.d/storage-ci.gpg && \
     echo "deb [arch=$(dpkg --print-architecture)] http://storage-ci.web.cern.ch/storage-ci/debian/xrootd/ $(lsb_release -cs) release" | tee -a /etc/apt/sources.list.d/cerneos-client.list > /dev/null && \
     echo "deb [arch=$(dpkg --print-architecture)] http://storage-ci.web.cern.ch/storage-ci/debian/eos/diopside/ $(lsb_release -cs) tag" | tee -a /etc/apt/sources.list.d/cerneos-client.list > /dev/null && \
-    echo "Package: xrootd* libxrd* libxrootd*\nPin: version 5.5.1\nPin-Priority: 1000" > /etc/apt/preferences.d/xrootd.pref && more /etc/apt/preferences.d/xrootd.pref && \
+    echo "Package: xrootd* libxrd* libxrootd*\nPin: version 5.5.1\nPin-Priority: 1000" > /etc/apt/preferences.d/xrootd.pref && \
     echo "Install eos-fusex" && \
-    apt-get -y install eos-fusex
+    apt-get -y update && apt-get -y install eos-fusex
