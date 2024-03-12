@@ -14,4 +14,4 @@ RUN echo "Hello from inside the container" && \
     apt-get -y update && apt-get -y install eos-fusex && \
     echo "Setup conf and dir" && \
     echo '{"name":"project-w","hostport":"eosproject-w.cern.ch","remotemountdir":"/eos/project/w/"}' > /etc/eos/fuse.project-w.conf && more /etc/eos/fuse.project-w.conf && \
-    mkdir /eos && eosxd -ofname=project-w && ls -lh /eos
+    mkdir /eos && eosxd -ofsname=project-w && ls -lh /eos
