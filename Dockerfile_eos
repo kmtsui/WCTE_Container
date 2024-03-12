@@ -1,0 +1,8 @@
+FROM kmtsui/geant4.10.3.3
+
+RUN echo "Hello from inside the container" && \
+    echo "Base image is from docker://kmtsui/geant4.10.3.3" && \ 
+    echo "Install eos dependencies" && \
+    apt update && apt upgrade && \ 
+    apt install -y lsb-release curl gnupg2
+    
