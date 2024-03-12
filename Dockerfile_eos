@@ -14,6 +14,8 @@ RUN echo "Hello from inside the container" && \
     echo "Package: xrootd* libxrd* libxrootd*\nPin: version 5.5.5\nPin-Priority: 1000" > /etc/apt/preferences.d/xrootd.pref && \
     echo "Install eos-fusex" && \
     apt-get -y update && apt-get -y install eos-fusex && \
-    echo "Setup conf and dir" && \
-    echo '{"name":"project-w","hostport":"eosproject-w.cern.ch","remotemountdir":"/eos/project/w/"}' > /etc/eos/fuse.project-w.conf && more /etc/eos/fuse.project-w.conf 
+    echo "Install Kerberos" && \
+    export DEBIAN_FRONTEND=noninteractive && apt-get install -y krb5-user libpam-krb5
+    #echo "Setup conf and dir" && \
+    #echo '{"name":"project-w","hostport":"eosproject-w.cern.ch","remotemountdir":"/eos/project/w/"}' > /etc/eos/fuse.project-w.conf && more /etc/eos/fuse.project-w.conf 
     #mkdir /eos && eosxd -ofsname=project-w && ls -lh /eos
