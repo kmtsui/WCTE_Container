@@ -11,4 +11,7 @@ RUN echo "Hello from inside the container" && \
     echo "deb [arch=$(dpkg --print-architecture)] http://storage-ci.web.cern.ch/storage-ci/debian/eos/diopside/ $(lsb_release -cs) tag" | tee -a /etc/apt/sources.list.d/cerneos-client.list > /dev/null && \
     echo "Package: xrootd* libxrd* libxrootd*\nPin: version 5.5.5\nPin-Priority: 1000" > /etc/apt/preferences.d/xrootd.pref && \
     echo "Install eos-fusex" && \
-    apt-get -y update && apt-get -y install eos-fusex
+    apt-get -y update && apt-get -y install eos-fusex && \
+    echo "Setup conf and dir" && \
+    mkdir /etc/eos && echo '{"name":"project-w","hostport":"eosproject-w.cern.ch","remotemountdir":"/eos/project/w/"}' > /etc/eos/fuse.project-w.conf && more /etc/eos/fuse.home-e.conf && \
+    mkdir /eos && eosxd -ofname=project-w && ls -lh /eos
