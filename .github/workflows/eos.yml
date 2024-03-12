@@ -1,4 +1,4 @@
-name: Docker geant4 Image CI
+name: Docker eos Image CI
 
 on:
 
