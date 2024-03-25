@@ -3,7 +3,10 @@ FROM kmtsui/root_6.26.14
 RUN echo "Hello from inside the container" && \
     echo "Base image is from docker://kmtsui/root_6.26.14" 
 
-RUN echo "Install GEANT4" && \
+RUN echo "Install x11" && \
+    apt-get -y update && apt-get -y upgrade && \
+    apt-get -y install xorg-dev && \
+    echo "Install GEANT4" && \
     wget https://github.com/Geant4/geant4/archive/refs/tags/v10.3.3.tar.gz && tar xvf v10.3.3.tar.gz && \
     echo "Apply patch to GEANT4" && \
     sed -i 's/fsqrt/fltsqrt/g' geant4-10.3.3/source/persistency/ascii/src/G4tgrEvaluator.cc && \
