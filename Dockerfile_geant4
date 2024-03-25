@@ -8,6 +8,6 @@ RUN echo "Install GEANT4" && \
     echo "Apply patch to GEANT4" && \
     sed -i 's/fsqrt/fltsqrt/g' geant4-10.3.3/source/persistency/ascii/src/G4tgrEvaluator.cc && \
     cd geant4-10.3.3 && mkdir build && cd build && \
-    cmake .. -DGEANT4_USE_GDML=ON -DCMAKE_INSTALL_PREFIX=/opt/geant4 -DGEANT4_INSTALL_DATA=ON -DGEANT4_BUILD_CXXSTD=14 && \
+    cmake .. -DGEANT4_USE_GDML=ON -DCMAKE_INSTALL_PREFIX=/opt/geant4 -DGEANT4_INSTALL_DATA=ON -DGEANT4_BUILD_CXXSTD=14 -DGEANT4_USE_OPENGL_X11=ON && \
     make && make install && \
     cd ../.. && rm -rf geant4-10.3.3 v10.3.3.tar.gz
