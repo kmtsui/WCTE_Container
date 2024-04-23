@@ -6,7 +6,7 @@ RUN echo "Hello from inside the container" && \
     echo "Base image is from docker://kmtsui/geant4.10.3.3" && \ 
     echo "Install eos dependencies" && \
     apt-get -y update && apt-get -y upgrade && \ 
-    apt-get -y install lsb-release curl gnupg2 && \
+    apt-get -y install libfuse3-dev lsb-release curl gnupg2 && \
     echo "Configure APT repositories to install the software" && \
     curl -sL http://storage-ci.web.cern.ch/storage-ci/storageci.key | gpg --dearmor -o /etc/apt/trusted.gpg.d/storage-ci.gpg && \
     echo "deb [arch=$(dpkg --print-architecture)] http://storage-ci.web.cern.ch/storage-ci/debian/xrootd/ $(lsb_release -cs) release" | tee -a /etc/apt/sources.list.d/cerneos-client.list > /dev/null && \
